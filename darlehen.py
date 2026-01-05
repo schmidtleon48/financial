@@ -15,7 +15,7 @@ kreditsumme_euro = 100e3
 gebuehren = 10e3
 annuittaet_monatlich_euro = 500
 zins_jaerlich_prcnt = 3
-rendite_asset_jaerlich_prcnt = 6
+rendite_asset_jaerlich_prcnt = -2
 
 # Modell: Fremdkapital
 investitionskapital = kreditsumme_euro - gebuehren
@@ -43,6 +43,7 @@ plt.plot(kreditsumme_euro_list, label = "Kreditsumme")
 plt.plot(np.ones(laenge_monaten) * annuittaet_monatlich_euro, label = "Monatliche Investitionen")
 plt.plot(investitionskapital * (1 + rendite_asset_monatlich_prcnt / 100)**np.arange(laenge_monaten), label = "Investitionskapital mit Fremdkapital")
 plt.plot(investitionskapital_direkt_list, label = "Investitionskapital direkt")
+plt.axhline(y=laenge_monaten * annuittaet_monatlich_euro, color='red', linestyle='--', label='Gesamt investiertes Kapital')
 plt.legend()
 plt.title("Annuitätsdarlehen")
 plt.xlabel("Zeit in Monaten")
@@ -84,6 +85,7 @@ plt.plot(kreditsumme_euro_list, label = "Kreditsumme")
 plt.plot(investition_monatlich_list, label = "Monatliche Investitionen")
 plt.plot(investitionskapital * (1 + rendite_asset_monatlich_prcnt / 100)**np.arange(laenge_monaten), label = "Investitionskapital mit Fremdkapital")
 plt.plot(investitionskapital_direkt_list, label = "Investitionskapital direkt")
+plt.axhline(y=np.sum(np.array(investition_monatlich_list)), color='red', linestyle='--', label='Gesamt investiertes Kapital')
 plt.legend()
 plt.title("Tilgungsdarlehen")
 plt.xlabel("Zeit in Monaten")
